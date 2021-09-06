@@ -1,0 +1,36 @@
+#!/usr/bin/python3
+# this software is undeer the CC0
+
+# Bindings for rog laptops which are not provided
+# by asusctl or don't work without a proper DE
+
+from pynput import keyboard
+from yaml import load, Loader
+import os
+import subprocess
+
+
+aura_brightness = ['off', 'low', 'med', 'high']
+current_aura_brightness = 3
+bindings = load(open(f'{os.environ["HOME"]}/.config/rog_bindings.yaml', 'r'), Loader=Loader)
+
+def on_press(key):
+    global bindings, aura_brightness, current_aura_brightness
+    if key == '<269025089>': os.system(bindings['rog'] + '&') # rog
+    if key == '<269025092>': os.system('asusctl profile -n' if bindings['aura-next'] == 'next' else bindings['aura-next'] + '&') # fan
+    if key == '<269025091>': os.system('asusctl led-mode -n' if bindings['aura-next'] == 'next' else bindings['aura-next'] + '&') # next-aura
+    if key == '<269025090>': os.system('asusctl led-mode -p' if bindings['aura-prev'] == 'prev' else bindings['aura-next'] + '&') # prev-aura
+    if key == '<269025029>':
+        current_aura_brightness += 1 if current_aura_brightness != 3 else 0
+        os.system(f'asusctl -k {aura_brightness[current_aura_brightness]}' if bindings['aura-brighter'] == 'brightness+' else bindings['aura-brighter'] + '&') # aura-brighter
+    if key == '<269025030>':
+        current_aura_brightness -= 1 if current_aura_brightness != 0 else 0
+        os.system(f'asusctl -k {aura_brightness[current_aura_brightness]}' if bindings['aura-darker'] == 'brightness-' else bindings['aura-darker'] + '&') # aura-darker
+
+def main():
+    listener = keyboard.Listener(lambda key: on_press(str(key)))
+    listener.start()
+    listener.join()
+
+if __name__ == '__main__':
+    main()

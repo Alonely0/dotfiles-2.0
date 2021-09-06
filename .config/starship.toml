@@ -1,0 +1,80 @@
+# Inserts a blank line between shell prompt
+add_newline = true
+
+format = """
+$hostname'$battery::$directory$package$git_branch$git_commit$git_status$git_state$rust
+$env_var$username$character"""
+
+[env_var]
+variable = "WHERE"
+style = "bold yellow"
+format = "[$env_value]($style): "
+default = "tty1"
+
+[hostname]
+ssh_only = false
+format =  "[$hostname](bold red) "
+
+[battery]
+format = "[$symbol]($style)"
+full_symbol = ""
+charging_symbol = ""
+discharging_symbol = ""
+unknown_symbol = ""
+
+[[battery.display]]
+threshold = 100
+style = "bold green"
+
+[[battery.display]]
+threshold = 70
+style = "bold dimmed green"
+
+[[battery.display]]
+threshold = 50
+style = "bold yellow"
+
+[[battery.display]]
+threshold = 30
+style = "bold orange"
+
+[[battery.display]]
+threshold = 20
+style = "bold red"
+
+[[battery.display]]
+threshold = 10
+style = "bold dimmed red"
+
+[directory]
+style = "bold blue"
+read_only = " => "
+read_only_style = "bold cyan"
+truncation_length = 4
+
+[username]
+style_root = "bold italic red"
+style_user = "italic purple"
+show_always = true
+format = "[$user]($style) "
+
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[➜](bold red)"
+
+[rust]
+format = "=> [$symbol($version)]($style)"
+
+[package]
+format = "[$symbol$version]($style)"
+display_private = true
+
+[git_branch]
+format = "::[$symbol$branch]($style) "
+style = "bold yellow"
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\)'

@@ -1,0 +1,291 @@
+;=========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+background = #FF1e1e1e
+background-alt = #3e3e3e
+foreground = #a19276
+foreground-alt = #a19276
+primary = #88C0D0BF
+secondary = #A3BE6CBF
+highlight = #FF717171
+alert = #ff4151
+
+[bar/main]
+monitor = ${env:MONITOR:}
+width = 100%
+height = 30
+radius = 0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+line-color = ${colors.highlight}
+
+border-size = 2
+border-color = ${colors.highlight}
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = "Iosevka Rounded:style=Bold:pixelsize=10;1:fontformat=truetype"
+font-1 = Iosevka Rounded:size=8:antialias=false;0:fontformat=truetype
+font-2 = Iosevka Rounded:pixelsize=10;1:fontformat=truetype
+font-3 = Iosevka Rounded:style=Medium:size=18;2:fontformat=truetype
+font-4 = Iosevka Rounded:style=Medium:size=7;2:fontformat=truetype
+font-5 = Iosevka Rounded:style=Medium:size=3;2:fontformat=truetype
+font-6 = "Iosevka Rounded:style=Regular:pixelsize=10;1:fontformat=truetype"
+font-7 = "Iosevka Rounded:style=Solid:pixelsize=10;1:fontformat=truetype"
+font-8 = "Iosevka Rounded:pixelsize=10;1:fontformat=truetype"
+font-9 = "Iosevka Rounded:pixelsize=10;1:fontformat=truetype"
+
+modules-left = ewmh xwindow
+modules-center = date
+modules-right = filesystem xkeyboard memory cpu temperature battery alsa pulseaudio spotify
+separator = " "
+tray-position = right
+tray-padding = 0
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/notif]
+type = custom/script
+# Change the path to where you downloaded polynotifications
+exec = ~/.config/polybar/polynotifications/polynotifications.sh
+format = <label>
+label-padding = 1
+tail = true
+
+[module/spotify]
+type = custom/script
+interval = 1
+format-prefix = ""
+format = <label>
+exec = python /home/guillem/.config/polybar/spotify_status.py -f '{song}'
+
+[module/ewmh]
+type = internal/xworkspaces
+
+pin-workspaces = false
+
+; create click handler to focus desktop
+enable-click = true
+; create scroll handler to cycle desktops
+enable-scroll = true
+
+format = <label-state>
+label-active-padding = 0
+format-padding = 0
+label-active =  "%name%"
+label-active-foreground = #aaaaaa
+
+label-occupied = ""
+label-urgent = ""
+label-empty = ""
+
+
+#label-focused-padding = 1
+#label-unfocused-padding = 1
+#label-visible-padding = 1
+#label-urgent-padding = 1
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:150:...%
+
+[module/xkeyboard]
+type = int
+blacklist-0 = num lock
+
+format-prefix = "  "
+
+ormat-prefix-foreground = #c792ea
+
+label-layout = %layout%
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+
+[module/filesystem]
+type = internal/fs
+
+mount-0 = /home
+
+label-mounted = %{F#1cfdc1}%mountpoint%%{F-} %free%/%total%
+label-unmounted = ""
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #fff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "CPU "
+format-prefix-foreground = #c3e88d
+;format-prefix-foreground = ${colors.foreground-alt}
+label = %percentage%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "MEM "
+format-prefix-foreground = #ffcb6b
+;format-prefix-foreground = ${colors.foreground-alt}
+label = %percentage_used%%
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = "%d/%m"
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M
+
+format-prefix = ""  
+format-prefix-foreground = #82aaff
+label = %date% %time%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume>
+label-volume = VOL %{F-}%percentage%%
+label-volume-foreground = #8be9fd
+
+label-muted = muted
+label-muted-foreground = #666
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 100
+
+format-charging = <animation-charging> <label-charging>
+
+format-discharging = <animation-discharging> <label-discharging>
+
+format-full-prefix = "BAT "
+format-full-prefix-foreground = ${colors.foreground-alt}
+
+ramp-capacity-0 = BAT
+ramp-capacity-1 = BAT
+ramp-capacity-2 = BAT
+ramp-capacity-foreground = #f49500
+
+animation-charging-0 = BAT
+animation-charging-1 = BAT
+animation-charging-2 = BAT
+animation-charging-foreground = #f49500
+animation-charging-framerate = 750
+
+animation-discharging-0 = BAT
+animation-discharging-1 = BAT
+animation-discharging-2 = BAT
+animation-discharging-foreground = #f49500
+animation-discharging-framerate = 750
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp><label>
+format-warn = <ramp><label-warn>
+
+label = %{F#1cfdc1}%{F-}%temperature-c%
+label-warn =  %temperature-c%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 =
+ramp-1 =
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini

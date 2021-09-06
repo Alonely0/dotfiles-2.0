@@ -1,0 +1,49 @@
+swipe:
+  3:
+    left:
+      command: "xdotool key ctrl+shift+Tab"
+    right:
+      command: "xdotool key ctrl+Tab"
+    up:
+      command: "xdotool key ctrl+t"
+    down:
+      command: "xdotool key ctrl+w"
+  4:
+    left:
+      command: "xdotool key super+h super+h"
+    right:
+      command: "xdotool key super+l super+l"
+    up:
+      command: "xdotool key super+shift+j"
+    down:
+      command: "xdotool key super+shift+k"
+
+pinch:
+  2:
+    in:
+      command: "xdotool keydown ctrl click 4 keyup ctrl"
+    out:
+      command: "xdotool keydown ctrl click 5 keyup ctrl"
+
+rotate:
+  3:
+    clockwise:
+      command: "xdotool key super+j"
+    counterclockwise:
+      command: "xdotool key super+k"
+
+tap:
+  2:
+    command: "rofi -show drun"
+  3:
+    command: "rofi -show window"
+  4:
+    command: "xautolock -locknow"
+
+plugin:
+  inputs:
+    libinput_command_input:
+      enable-tap: true
+      enable-dwt: true
+      show-keycodes: true
+      verbose: false

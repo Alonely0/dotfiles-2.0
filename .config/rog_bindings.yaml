@@ -1,0 +1,6 @@
+rog: 'alacritty' # shell command
+fan: 'next' # next or shell command
+aura-next: 'next' # next or shell command
+aura-prev: 'prev' # prev or shell command
+aura-brighter: 'brightness+' # brightness+ or shell command
+aura-darker: 'brightness-' # brightness- or shell command

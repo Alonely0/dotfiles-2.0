@@ -1,0 +1,6 @@
+{
+  "rust-analyzer.diagnostics.enable": false,
+  "rust-analyzer.inlayHints.chainingHints": true,
+  "rust-analyzer.inlayHints.typeHints": true,
+  "rust-analyzer.inlayHints.parameterHints": true
+}
