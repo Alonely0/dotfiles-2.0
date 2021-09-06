@@ -23,31 +23,31 @@ This work is published from:
 ### Desktop
 What you'll see when there are no windows.
 
-<img src="https://raw.githubusercontent.com/Alonely0/dotfiles/master/images/desktop.png">
+<img src="https://raw.githubusercontent.com/Alonely0/dotfiles-2.0/master/images/desktop.png">
 
 
 ### Intelligent layout
 This XMonad layout changes its algorithm depending on the number of windows, changing between `Tall` (normal tiling) and `Spiral` (fibonacci spiral) when there are more than 4 windows.
 
-<img src="https://raw.githubusercontent.com/Alonely0/dotfiles/master/images/tiling+spiral.png">
+<img src="https://raw.githubusercontent.com/Alonely0/dotfiles-2.0/master/images/tiling+spiral.png">
 
 
 ### Mirror + Tiled layout
 This XMonad layout uses the `Tall` algorithm (normal tiling) modified with the Mirror preset, which creates an horizontal layout.
 
-<img src="https://raw.githubusercontent.com/Alonely0/dotfiles/master/images/mirror-tiled.png">
+<img src="https://raw.githubusercontent.com/Alonely0/dotfiles-2.0/master/images/mirror-tiled.png">
 
 
 ### Centered Master + Grid layout
 This XMonad layout uses the `Grid` algorithm (grid-ish tiling) modified with the Centered Master preset, which creates a layout which puts all windows in a grid behind its master.
 
-<img src="https://raw.githubusercontent.com/Alonely0/dotfiles/master/images/centeredmaster+grid.png">
+<img src="https://raw.githubusercontent.com/Alonely0/dotfiles-2.0/master/images/centeredmaster+grid.png">
 
 
 ### Rofi menu
 Shows applications and windows.
 
-<img src="https://raw.githubusercontent.com/Alonely0/dotfiles/master/images/rofi-drun.png"> <img src="https://raw.githubusercontent.com/Alonely0/dotfiles/master/images/rofi-window.png">
+<img src="https://raw.githubusercontent.com/Alonely0/dotfiles-2.0/master/images/rofi-drun.png"> <img src="https://raw.githubusercontent.com/Alonely0/dotfiles-2.0/master/images/rofi-window.png">
 
 
 ### Polybar
@@ -56,30 +56,30 @@ Polybar shows:
   * date & time
   * home partition usage, memory usage, cpu usage, cpu temperature, battery, volume, current Spotify song & system tray.
 
-<img src="https://raw.githubusercontent.com/Alonely0/dotfiles/master/images/polybar.png">
+<img src="https://raw.githubusercontent.com/Alonely0/dotfiles-2.0/master/images/polybar.png">
 
 
 ### Lockscreen
 A lockscreen that blurs screen content.
 
-<img src="https://raw.githubusercontent.com/Alonely0/dotfiles/master/images/lockscreen.png">
+<img src="https://raw.githubusercontent.com/Alonely0/dotfiles-2.0/master/images/lockscreen.png">
 
 
 ### NeoVim
 A simple neovim config, if you want something closer to an IDE consider NvChad instead.
 
-<img src="https://raw.githubusercontent.com/Alonely0/dotfiles/master/images/nvim.png">
+<img src="https://raw.githubusercontent.com/Alonely0/dotfiles-2.0/master/images/nvim.png">
 
 
 ### Ranger *(with NeoVim integration)*
 A CLI file manager with integration with NeoVim.
 
-<img src="https://raw.githubusercontent.com/Alonely0/dotfiles/master/images/ranger.png">
+<img src="https://raw.githubusercontent.com/Alonely0/dotfiles-2.0/master/images/ranger.png">
 
 ### Tmux
 A simple but powerful terminal multiplexer.
 
-<img src="https://raw.githubusercontent.com/Alonely0/dotfiles/master/images/tmux.png">
+<img src="https://raw.githubusercontent.com/Alonely0/dotfiles-2.0/master/images/tmux.png">
 
 
 ---
